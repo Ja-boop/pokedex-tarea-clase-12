@@ -1,0 +1,26 @@
+{
+  "name": "pokedex-tarea-clase-12",
+  "version": "1.0.0",
+  "description": "pokeApi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ja-boop/pokedex-tarea-clase-12.git"
+  },
+  "author": "Viktor Agustin Luzny",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ja-boop/pokedex-tarea-clase-12/issues"
+  },
+  "homepage": "https://github.com/Ja-boop/pokedex-tarea-clase-12#readme",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.4.1"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.3.31"
+  }
+}
