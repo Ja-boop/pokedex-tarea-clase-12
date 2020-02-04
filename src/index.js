@@ -5,4 +5,8 @@ fetch("https://pokeapi.co/api/v2/pokemon/")
 .then(respuestaJSON => {
     console.log(respuestaJSON)
 
+    Object.keys(respuestaJSON.results).forEach(nombrePokemon => {
+        $("h4").append($(`<p name="nombre-pokemon">${nombrePokemon}</p>`));
+    });
+
 })
