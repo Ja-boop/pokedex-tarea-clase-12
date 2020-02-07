@@ -1,9 +1,10 @@
 /// <reference types="jquery" />
 
-fetch("https://pokeapi.co/api/v2/pokemon/")
+fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20")
 .then(respuesta => respuesta.json())
 .then(respuestaJSON => {
 
+    console.log(respuestaJSON.next);
     console.log(respuestaJSON.results);
     let listaNombreDePokemons;
     let urlDePokemon;
