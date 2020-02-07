@@ -5,8 +5,9 @@ fetch("https://pokeapi.co/api/v2/pokemon/")
 .then(respuestaJSON => {
     console.log(respuestaJSON.results);
     let listaNombreDePokemons;
+    let urlDePokemon;
 
-    sacarLosNombresDeLosPokemon();
+        sacarElNombreYURLDeLosPokemon();
 
     
         
@@ -17,12 +18,15 @@ fetch("https://pokeapi.co/api/v2/pokemon/")
     
 
     
-        function sacarLosNombresDeLosPokemon (){
+        function sacarElNombreYURLDeLosPokemon (){
         for(i = 0; i <= 20; i++){
             listaNombreDePokemons = respuestaJSON.results[0 + i].name;
-            $("ul").append($(`<p name="nombre-pokemon">${listaNombreDePokemons}</p>`));
+            urlDePokemon = respuestaJSON.results[0 + i].url;
+
+            $("ul").append($(`<a href=${urlDePokemon} 
+            target="_blank" rel="noopener noreferrer" name="nombre-pokemon">${listaNombreDePokemons}</a><br>`));
         }
         
-    }
+        }
 })
 
