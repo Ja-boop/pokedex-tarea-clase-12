@@ -3,6 +3,7 @@
 let nextURL = null;
 let listaPokemon = document.querySelector('#lista-pokemon')
 
+
 listarPokemons();
 
 
@@ -13,11 +14,11 @@ function listarPokemons(url){
     .then(respuesta => respuesta.json())
     .then(pokemon => {
         listadorDePokemon(pokemon.results);
-        nextURL = !!pokemon.next ? pokemon.next: null;
+        nextURL = pokemon.next
     })
 
     .catch(error => {
-    console.log(error + " Error en la peticion 1");
+    console.log(error + " Error en la peticion");
     })
 }
 
@@ -25,7 +26,7 @@ let pintarPokemon = ``
 
 function listadorDePokemon(usuarios) {
 
-    usuarios.map((pokemon, i) =>{
+    usuarios.map((pokemon) =>{
 
         pintarPokemon = `
         <a href=${pokemon.url} 
