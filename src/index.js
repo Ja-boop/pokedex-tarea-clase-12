@@ -1,23 +1,63 @@
 /// <reference types="jquery" />
 
-fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20")
-.then(respuesta => respuesta.json())
-.then(respuestaJSON => {
+let nextURL = null;
+let listaPokemon = document.querySelector('#lista-pokemon')
 
-    console.log(respuestaJSON.next);
-    console.log(respuestaJSON.results);
-    let listaNombreDePokemons;
-    let urlDePokemon;
+listarPokemons();
 
-    
-    for(i = 0; i < 20; i++){
-        listaNombreDePokemons = respuestaJSON.results[i].name;
-        urlDePokemon = respuestaJSON.results[i].url;
 
-        $("ul").append($(`<a href=${urlDePokemon} 
-        target="_blank" rel="noopener noreferrer" name="nombre-pokemon">${listaNombreDePokemons}</a><br>`));
-    }
-        
-    
+function listarPokemons(url){
+    url = url || 'https://pokeapi.co/api/v2/pokemon'
+
+    fetch(url)
+    .then(respuesta => respuesta.json())
+    .then(pokemon => {
+        listadorDePokemon(pokemon.results);
+        nextURL = !!pokemon.next ? pokemon.next: null;
+    })
+.catch(error => {
+    console.log(error + " Error en la peticion 1");
 })
+}
+
+let pintarPokemon = ``
+
+function listadorDePokemon(usuarios) {
+
+    usuarios.map((pokemon, i) =>{
+
+        pintarPokemon = `
+        <a href=${pokemon.url} 
+        target="_blank" rel="noopener noreferrer" name="nombre-pokemon">${pokemon.name}</a><br>
+        
+        `
+
+        listaPokemon.innerHTML += pintarPokemon;
+    })
+}
+
+document.querySelector("#cambiar-pagina").addEventListener("click",(e) =>{
+    console.log('No anda')
+
+    $("a").remove();
+    $('br').remove();
+
+    if(nextURL)
+    listarPokemons(nextURL);
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
