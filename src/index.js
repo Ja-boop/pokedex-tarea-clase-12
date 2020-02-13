@@ -15,9 +15,10 @@ function listarPokemons(url){
         listadorDePokemon(pokemon.results);
         nextURL = !!pokemon.next ? pokemon.next: null;
     })
-.catch(error => {
+
+    .catch(error => {
     console.log(error + " Error en la peticion 1");
-})
+    })
 }
 
 let pintarPokemon = ``
