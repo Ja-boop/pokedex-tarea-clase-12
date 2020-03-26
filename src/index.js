@@ -3,7 +3,7 @@
 let nextURL = null;
 let listaPokemon = document.querySelector('#lista-pokemon');
 let pokemones = document.querySelectorAll('.nombre-pokemon');
-let tipoPokemon = document.querySelector('#tipo-pokemon');
+let tipoPokemon = document.querySelector('.tipo-pokemon');
 const fotoPokemon = document.querySelector('#lista-imagenes-pokemon');
 
 
@@ -14,28 +14,28 @@ function listarPokemons(url) {
     url = url || 'https://pokeapi.co/api/v2/pokemon'
 
     fetch(url)
-        .then(respuesta => respuesta.json())
-        .then(pokemon => {
-            listadorDePokemon(pokemon.results);
-            nextURL = pokemon.next
+    .then(respuesta => respuesta.json())
+    .then(pokemon => {
+        listadorDePokemon(pokemon.results);
+        nextURL = pokemon.next
 
-            $(".nombre-pokemon").click((e) => {
+        $(".nombre-pokemon").click((e) => {
                 let linkDelPokemon = e.currentTarget.value;
                 fetch(linkDelPokemon)
-                    .then(respuesta => respuesta.json())
-                    .then(pokemon => {
-                        console.log(pokemon.types);
-                        mostrarTipoPokemon(pokemon);
-                        mostrarImagenPokemon(pokemon);
-                    })
+                .then(respuesta => respuesta.json())
+                .then(pokemon => {
+                    console.log(pokemon);
+                    mostrarTipoPokemon(pokemon.types);
+                    mostrarImagenPokemon(pokemon);
+                })
 
-                e.preventDefault()
-            })
+            e.preventDefault()
         })
+    })
 
-        .catch(error => {
-            console.log(error + " Error en la peticion");
-        })
+    .catch(error => {
+        console.log(error + " Error en la peticion");
+    })
 }
 
 function mostrarImagenPokemon(pokemon) {
@@ -49,12 +49,19 @@ function mostrarImagenPokemon(pokemon) {
     }
 }
 
-function mostrarTipoPokemon(pokemon) {
-    $('.pokemon-type').remove();
-    for(let i = 0; i < pokemon.types.length; i++){
-        $(tipoPokemon).append(`<ul class="pokemon-type">Type: ${pokemon.types[i].type.name}</ul>`)
-    }
-    
+function mostrarTipoPokemon(pokemonTypes) {
+    $('.tipo-pokemon').removeClass("hide");
+
+    pokemonTypes.map((pokemon) => {
+        ponerTipoPokemon = `
+            ${pokemon.type.name} 
+        `
+
+        tipoPokemon.innerHTML += ponerTipoPokemon;
+    })
+
+
+
 }
 
 
