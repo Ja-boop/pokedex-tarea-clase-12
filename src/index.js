@@ -29,6 +29,10 @@ function listarPokemons(url) {
                     mostrarImagenPokemon(pokemon);
                 })
 
+                .catch(error => {
+                    console.log(error + " Error en la peticion");
+                })
+
             e.preventDefault()
         })
     })
@@ -51,6 +55,7 @@ function mostrarImagenPokemon(pokemon) {
 
 function mostrarTipoPokemon(pokemonTypes) {
     $('.tipo-pokemon').removeClass("hide");
+    $('.tipo-pokemon').text("");
 
     pokemonTypes.map((pokemon) => {
         ponerTipoPokemon = `

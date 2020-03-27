@@ -13,21 +13,27 @@
 <body>
 
 
-    <div class="row">
-        <div class="alert alert-dark" role="alert">¡Buscar Pokemon!
-            <br>
-            <ul id="lista-pokemon"></ul>
-        </div>
 
-        <div id="div-tipo-pokemon">
-            <p id="p-tipo-pokemon" class="tipo-pokemon hide">Pokemon's Type: </p>
-        </div>
+    <div id="columna-1" style="float: left;">
+        <ul id="lista-pokemon"></ul>
+        <button id="cambiar-pagina">Siguiente Pagina</button>
 
+        </div>
+    </div>
+
+    <div id="columna-2" style="text-align: center;">
         <div id="lista-imagenes-pokemon"></div>
     </div>
 
 
-    <button id="cambiar-pagina">Siguiente Pagina</button>
+
+
+    <div id="div-tipo-pokemon" style="text-align: center;">
+        <p id="p-tipo-pokemon" class="tipo-pokemon hide">Pokemon's Type: </p>
+    </div>
+
+
+
 
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src='src/index.js'></script>
