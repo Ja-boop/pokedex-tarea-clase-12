@@ -5,3 +5,7 @@
 .float {
     float: left
 }
+
+body {
+    background-color: red;
+}

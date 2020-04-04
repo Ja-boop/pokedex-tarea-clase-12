@@ -3,7 +3,7 @@
 let nextURL = null;
 let listaPokemon = document.querySelector('#lista-pokemon');
 let pokemones = document.querySelectorAll('.nombre-pokemon');
-let tipoPokemon = document.querySelector('.tipo-pokemon');
+let tipoPokemon = document.querySelector('#strong-tipo-pokemon');
 const fotoPokemon = document.querySelector('#lista-imagenes-pokemon');
 
 
@@ -16,7 +16,7 @@ function listarPokemons(url) {
     fetch(url)
     .then(respuesta => respuesta.json())
     .then(pokemon => {
-        listadorDePokemon(pokemon.results);
+        //listadorDePokemon(pokemon.results);
         nextURL = pokemon.next
 
         $(".nombre-pokemon").click((e) => {
@@ -54,14 +54,14 @@ function mostrarImagenPokemon(pokemon) {
 }
 
 function mostrarTipoPokemon(pokemonTypes) {
+    $('#p-tipo-pokemon').removeClass("hide");
     $('.tipo-pokemon').removeClass("hide");
-    $('.tipo-pokemon').text("");
+    $(tipoPokemon).text("");
 
     pokemonTypes.map((pokemon) => {
         ponerTipoPokemon = `
             ${pokemon.type.name} 
         `
-
         tipoPokemon.innerHTML += ponerTipoPokemon;
     })
 
@@ -77,7 +77,7 @@ function listadorDePokemon(usuarios) {
 
         ponerPokemon = `
         <button value=${pokemon.url} 
-        target="_blank" rel="noopener noreferrer" class="nombre-pokemon">${pokemon.name}</button><br>
+        target="_blank" rel="noopener noreferrer" class="nombre-pokemon" style="width: 120px;text-transform: uppercase;">${pokemon.name}</button><br>
         
         `
 
@@ -85,15 +85,15 @@ function listadorDePokemon(usuarios) {
     })
 }
 
-document.querySelector("#cambiar-pagina").addEventListener("click", (e) => {
-    console.log('El boton funciona')
+// document.querySelector("#cambiar-pagina").addEventListener("click", (e) => {
+//     console.log('El boton funciona')
 
-    $(".nombre-pokemon").remove();
-    $('br').remove();
+//     $(".nombre-pokemon").remove();
+//     $('br').remove();
 
-    if (nextURL)
-        listarPokemons(nextURL);
-});
+//     if (nextURL)
+//         listarPokemons(nextURL);
+// });
 
 
 
