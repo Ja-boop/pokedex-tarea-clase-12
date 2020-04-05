@@ -8,32 +8,40 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/effbf58cb9.js" crossorigin="anonymous"></script>
 </head>
 
 <body style="background-color: red;">
     <h1 style="text-align: center;"><img src="logo/Pokédex_logo.png"></h1>
-    
 
-    <!-- <div id="columna-1" style="float: left;width: 300px;">
+
+    <div id="div-barra-busqueda">
+        <form class="form-inline d-flex justify-content-center md-form form-sm mt-0">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input id="barra-busqueda" class="form-control form-control-sm ml-3 w-75" type="text"
+                placeholder="Search Pokemons by name" aria-label="Search Pokemons by name">
+        </form>
+    </div>
+
+    <div id="columna-1" style="float: left;width: 300px;">
         <ul id="lista-pokemon"></ul>
-        <button id="cambiar-pagina">Siguiente Pagina</button>
-
-    </div> -->
-    </div>
-
-    <div id="columna-2" style="text-align: center;width: 300px;float: left;height: 646px;">
-        <div id="lista-imagenes-pokemon"></div>
-        <div id="div-tipo-pokemon" style="text-align: center;">
-            <p id="p-tipo-pokemon" class="hide">Pokemon's Type: <strong id="strong-tipo-pokemon"></strong> </p>
-            <p class="tipo-pokemon hide" style="text-transform: uppercase;"></p>
-        </div>
+        <!-- <button id="cambiar-pagina" style="position: relative; left: 40px;">Siguiente Pagina</button> -->
     </div>
 
 
 
+    <div id="lista-imagenes-pokemon" style="float: left;"></div>
+    <div id="div-tipo-pokemon" style="float: left;">
+        <p id="p-tipo-pokemon" class="hide">Type: <strong id="strong-tipo-pokemon"></strong> </p>
+        <p class="tipo-pokemon hide" style="text-transform: uppercase;"></p>
+    </div>
 
 
-    
+
+
+
+
+
 
 
 
