@@ -1,0 +1,130 @@
+/*
+Primero hago una variable nextURL = null;
+
+Despues una variable que contenga el id del <ul> donde van a ir listado los pokemons
+
+Llamo a la funcion listarPokemons();
+
+Armo la funcion listarPokemons(con el parametro "url")
+
+En la funcion digo que el parametro "url" va a ser igual a url || 'https://pokeapi.co/api/v2/pokemon'
+
+"||"(OR) Regresa url si tal puede convertirse a true; de lo contrario, regresa 'https://pokeapi.co/api/v2/pokemon'. De esta forma, cuando se usa con valores Boolean, || regresa true si cualquier operando es verdadero; pero si ambos son falsos, regresa "false".
+
+
+el operador || lo que hace es darte el valor de la izquierda si es truthy, o el dalor de la derecha si es falsy
+
+o sea que dice, “si url está definido, dejalo como está, si no, dame ‘https://pokeapi.co/api/v2/pokemon’”
+
+la razón por lo que hace esto, es porque nextURL empieza siendo null
+
+y vos estás llamando a  listarPokemons(nextURL);
+
+en el handler de cambiar página
+
+la primera vez que toques el #cambiar-pagina, vas a estar pasando null como parámetro (porque nextUrl, variable global, empieaza siendo null)
+
+la función listarPokemons dice “si me estás pasando una URL válida, usemos eso, si no, vamos a cargar la primer página por default ‘https://pokeapi.co/api/v2/pokemon’
+
+
+
+Depues hago un fetch de llamando a "url"
+then
+then(pokemon => {
+    llamo a la funcion listadorDePokemon(con el parametro pokemon.results);
+    nextURL = !!pokemon.next ? pokemon.next: null;
+
+    esto es porque no hay pokemones infinitos
+
+por lo tanto no hay páginas infinitas
+
+en algún momento llegás a la última página
+
+entonces la respuesta de json de pokemon, viene con un atributo “next”
+
+https://pokeapi.co/api/v2/pokemon
+
+"count": 964,
+"next": "https://pokeapi.co/api/v2/pokemon?offset=20&limit=20",
+"previous": null,
+"results": […]
+
+ese es el resultado
+
+entonces ahí te está diciendo cuál es la siguiente página
+
+pero si vas muuuuy adelante, ponele: https://pokeapi.co/api/v2/pokemon?offset=2940&limit=20
+
+fijate que next es null
+
+{
+"count": 964,
+"next": null,
+"previous": "https://pokeapi.co/api/v2/pokemon?offset=2920&limit=20",
+"results": []
+}
+})
+
+bueno eso es otra cosa
+
+pero ahora en particular te explico por qué está         nextURL = !!pokemon.next ? pokemon.next: null;
+
+!! es para convertir una expresión en booleana
+
+funciona con cualquier cosa
+
+!!“”  //false. Por qué? Porque “” es falsy, !“” es true, y !!“” es false.
+
+!!null es false
+
+eso es lo que viene en pokemon.next
+
+podrías haber escrito nextUrl = Boolean(pokemon.next) ? pokemon.next : null
+
+el tema es que como pokemon.next es  un string o null
+
+también podés hacer nextUrl = pokemon.next y listo.
+
+y te ahorrás esa conversión loca
+
+Resumiendo: pokemon.next puede ser un string, que representa la URL de la próxima página, o null.
+Al hacer nextUrl = Boolean(pokemon.next) ? pokemon.next : null; estás diciendo, quiero pasar pokemon.next a Boolean, si es true, quiero el string, si es false, quiero null.
+Pero eso es exactamente lo que ya hace pokemon.next! Es el string en si, o null. O sea que no te hace falta hacer ninguna transformación.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+En la funcion listadorDePokemon(tomo como parametro: usuarios)
+
+Usuarios va a ser pokemon.results
+
+pokemon.results.map((pokemon) => {
+
+    pintarPokemon = `
+    <a href=${pokemon.url} 
+    target="_blank" rel="noopener noreferrer" name="nombre-pokemon">${pokemon.name}</a><br>
+        
+    `
+    listaPokemon.innerHTML += pintarPokemon; (+= agrega valores)
+})
+
+En la funcion lo que hago es poner a los pokemon en la lista de listaPokemon
+
+*/
