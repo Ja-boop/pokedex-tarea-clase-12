@@ -8,6 +8,10 @@ const fotoPokemon = document.querySelector('#lista-imagenes-pokemon');
 const barraDeBusqueda = document.querySelector('#barra-busqueda');
 let pokemonesBarraBusqueda = [];
 
+class Pokemon{
+    fetch
+}
+
 
 barraDeBusqueda.addEventListener('keyup', (e) => {
     const searchString = e.target.value.toLowerCase().match(/^[A-Za-z\-]+/);
@@ -20,11 +24,7 @@ barraDeBusqueda.addEventListener('keyup', (e) => {
     if(searchString !== null) {
         listadorDePokemon(pokemonesFiltrados);
     } else {
-        $(".nombre-pokemon").remove();
-        $('br').remove();
-        $('.imagen-pokemon').remove();
-        $(tipoPokemon).text("");
-        $('#p-tipo-pokemon').addClass('hide');
+        borrarDatosFotosColumnas(); 
     }
 
     $(".nombre-pokemon").click((e) => {
@@ -125,7 +125,13 @@ function listadorDePokemon(usuarios) {
 
 
 
-
+function borrarDatosFotosColumnas(){
+    $(".nombre-pokemon").remove();
+        $('br').remove();
+        $('.imagen-pokemon').remove();
+        $(tipoPokemon).text("");
+        $('#p-tipo-pokemon').addClass('hide');
+}
 
 
 
